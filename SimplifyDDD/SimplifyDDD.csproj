@@ -82,7 +82,6 @@
     <Compile Include="Entity\IAggregateRoot.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Entity\PageModel.cs" />
-    <Compile Include="Extension\CollectionExtension.cs" />
     <Compile Include="Extension\PageExtension.cs" />
     <Compile Include="Extension\Utility.cs" />
     <Compile Include="IoCFactory.cs" />
