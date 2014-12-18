@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplifyDDD", "SimplifyDDD\SimplifyDDD.csproj", "{4E58B52D-667B-4E9A-BC2F-A377ADB40A8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplifyDDD.EntityFramework", "SimplifyDDD.EntityFramework\SimplifyDDD.EntityFramework.csproj", "{200635D5-89CB-4D20-AFB5-869B4E48DD51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplifyDDD.Mvc", "SimplifyDDD.Mvc\SimplifyDDD.Mvc.csproj", "{21D9A031-8E8B-409A-9739-17ACF4DF69B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{1D00A84D-5A75-424E-A1B1-29D4B0D58110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{960723A3-FEE5-46E5-B0E0-1B30A1D9EA0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Persistence", "Sample.Persistence\Sample.Persistence.csproj", "{B07F041F-7B18-460C-AC63-64077471A28A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.UnitTest", "Sample.UnitTest\Sample.UnitTest.csproj", "{DB563255-F5D3-4A7A-A6EE-5B4C21B1BF6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E58B52D-667B-4E9A-BC2F-A377ADB40A8B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{4E58B52D-667B-4E9A-BC2F-A377ADB40A8B}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{4E58B52D-667B-4E9A-BC2F-A377ADB40A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E58B52D-667B-4E9A-BC2F-A377ADB40A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{200635D5-89CB-4D20-AFB5-869B4E48DD51}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{200635D5-89CB-4D20-AFB5-869B4E48DD51}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{200635D5-89CB-4D20-AFB5-869B4E48DD51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200635D5-89CB-4D20-AFB5-869B4E48DD51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D9A031-8E8B-409A-9739-17ACF4DF69B4}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{21D9A031-8E8B-409A-9739-17ACF4DF69B4}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{21D9A031-8E8B-409A-9739-17ACF4DF69B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D9A031-8E8B-409A-9739-17ACF4DF69B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960723A3-FEE5-46E5-B0E0-1B30A1D9EA0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960723A3-FEE5-46E5-B0E0-1B30A1D9EA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960723A3-FEE5-46E5-B0E0-1B30A1D9EA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960723A3-FEE5-46E5-B0E0-1B30A1D9EA0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B07F041F-7B18-460C-AC63-64077471A28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07F041F-7B18-460C-AC63-64077471A28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07F041F-7B18-460C-AC63-64077471A28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07F041F-7B18-460C-AC63-64077471A28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB563255-F5D3-4A7A-A6EE-5B4C21B1BF6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB563255-F5D3-4A7A-A6EE-5B4C21B1BF6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB563255-F5D3-4A7A-A6EE-5B4C21B1BF6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB563255-F5D3-4A7A-A6EE-5B4C21B1BF6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{960723A3-FEE5-46E5-B0E0-1B30A1D9EA0E} = {1D00A84D-5A75-424E-A1B1-29D4B0D58110}
+		{B07F041F-7B18-460C-AC63-64077471A28A} = {1D00A84D-5A75-424E-A1B1-29D4B0D58110}
+		{DB563255-F5D3-4A7A-A6EE-5B4C21B1BF6F} = {1D00A84D-5A75-424E-A1B1-29D4B0D58110}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal
