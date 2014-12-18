@@ -81,7 +81,6 @@
     <Compile Include="Entity\ComparableModel.cs" />
     <Compile Include="Entity\IAggregateRoot.cs" />
     <Compile Include="Entity\IEntity.cs" />
-    <Compile Include="Entity\ITest.cs" />
     <Compile Include="Entity\PageModel.cs" />
     <Compile Include="Extension\PageExtension.cs" />
     <Compile Include="Extension\Utility.cs" />
