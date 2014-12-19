@@ -6,7 +6,9 @@ using Sample.Persistence;
 using SimplifyDDD;
 using SimplifyDDD.Config;
 using SimplifyDDD.EntityFramework;
+using SimplifyDDD.EntLibLogging;
 using SimplifyDDD.Extension;
+using SimplifyDDD.Logging;
 using SimplifyDDD.UnitOfWork;
 using Microsoft.Practices.Unity;
 
@@ -31,6 +33,14 @@ namespace Sample.UnitTest
             long count = 0;
             var pageActivities =
                 domainRepository.FindAll<Activity>().ToList().Page(1, 3);
+        }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            SimplifyDDDConfiguration.Instance.RegisterLogging();
+            var logger = IoCFactory.Resolve<ILogger>();
+            logger.Debug("test");
         }
     }
 }
