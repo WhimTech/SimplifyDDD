@@ -85,6 +85,8 @@
     <Compile Include="Extension\PageExtension.cs" />
     <Compile Include="Extension\Utility.cs" />
     <Compile Include="IoCFactory.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILoggerFactory.cs" />
     <Compile Include="Repository\IDomainRepository.cs" />
     <Compile Include="Specifications\AllSpecification.cs" />
     <Compile Include="Specifications\AndNotSpecification.cs" />
