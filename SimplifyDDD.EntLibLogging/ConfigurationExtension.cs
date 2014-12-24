@@ -8,9 +8,9 @@ namespace SimplifyDDD.EntLibLogging
 {
     public static class ConfigurationExtension
     {
-        public static SimplifyDDDConfiguration RegisterLogging(this SimplifyDDDConfiguration simplifyDddConfiguration)
+        public static SimplifyDDDConfiguration RegisterEntLibLogging(this SimplifyDDDConfiguration simplifyDddConfiguration)
         {
-            IoCFactory.Instance.CurrentContainer.RegisterType<ILogger, Logger>();
+            IoCFactory.Instance.CurrentContainer.RegisterType<ILoggerFactory, LoggerFactory>();
             return simplifyDddConfiguration;
         }
 

@@ -11,6 +11,9 @@ namespace SimplifyDDD.Logging
     {
         /// <summary>Create a logger with the given logger name.
         /// </summary>
+        ILogger Create();
+        /// <summary>Create a logger with the given logger name.
+        /// </summary>
         ILogger Create(string name);
         /// <summary>Create a logger with the given type.
         /// </summary>

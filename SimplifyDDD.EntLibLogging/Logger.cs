@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
@@ -10,85 +11,121 @@ namespace SimplifyDDD.EntLibLogging
 {
     public class Logger : ILogger
     {
-        private LogWriter _writer = EnterpriseLibraryContainer.Current.GetInstance<LogWriter>();
+        private readonly LogWriter _writer;
+
+        public Logger(LogWriter writer)
+        {
+            _writer = writer;
+        }
 
         public void Debug(object message)
         {
-            var log = new LogEntry();
-            log.Message = message.ToString();
-            log.Categories.Add("General");
-            log.Priority = 1;
+            var log = new LogEntry
+            {
+                Message = message.ToString(),
+                Priority = (int)TraceEventType.Verbose,
+                Severity = TraceEventType.Verbose
+            };
+            log.Categories.Add("Debug");
             _writer.Write(log);
         }
 
         public void DebugFormat(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Debug(string.Format(format, args));
         }
 
         public void Debug(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            DebugFormat("Message:{0},Exception:{1},StackTrace:{2}", message.ToString(), exception.Message, exception.StackTrace);
         }
 
         public void Info(object message)
         {
-            throw new NotImplementedException();
+            var log = new LogEntry
+            {
+                Message = message.ToString(),
+                Priority = (int)TraceEventType.Information,
+                Severity = TraceEventType.Information
+            };
+            log.Categories.Add("Information");
+            _writer.Write(log);
         }
 
         public void InfoFormat(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Info(string.Format(format, args));
         }
 
         public void Info(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            InfoFormat("Message:{0},Exception:{1},StackTrace:{2}", message.ToString(), exception.Message, exception.StackTrace);
         }
 
         public void Error(object message)
         {
-            throw new NotImplementedException();
+            var log = new LogEntry
+            {
+                Message = message.ToString(),
+                Priority = (int)TraceEventType.Error,
+                Severity = TraceEventType.Error
+            };
+            log.Categories.Add("Error");
+            _writer.Write(log);
         }
 
         public void ErrorFormat(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Error(string.Format(format, args));
         }
 
         public void Error(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            ErrorFormat("Message:{0},Exception:{1},StackTrace:{2}", message.ToString(), exception.Message, exception.StackTrace);
         }
 
         public void Warn(object message)
         {
-            throw new NotImplementedException();
+            var log = new LogEntry
+            {
+                Message = message.ToString(),
+                Priority = (int)TraceEventType.Warning,
+                Severity = TraceEventType.Warning
+            };
+            log.Categories.Add("Warning");
+            _writer.Write(log);
         }
 
         public void WarnFormat(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Warn(string.Format(format, args));
         }
 
         public void Warn(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            WarnFormat("Message:{0},Exception:{1},StackTrace:{2}", message.ToString(), exception.Message, exception.StackTrace);
         }
 
         public void Fatal(object message)
         {
-            throw new NotImplementedException();
+            var log = new LogEntry
+            {
+                Message = message.ToString(),
+                Priority = (int)TraceEventType.Critical,
+                Severity = TraceEventType.Critical
+            };
+            log.Categories.Add("Critical");
+            _writer.Write(log);
         }
 
         public void FatalFormat(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Fatal(string.Format(format, args));
         }
 
         public void Fatal(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            FatalFormat("Message:{0},Exception:{1},StackTrace:{2}", message.ToString(), exception.Message, exception.StackTrace);
         }
     }
 }

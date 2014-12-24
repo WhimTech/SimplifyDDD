@@ -20,7 +20,7 @@ namespace Sample.UnitTest
         [TestMethod]
         public void TestMethod1()
         {
-            SimplifyDDDConfiguration.Instance.RegisterPersistence();
+            SimplifyDDDConfiguration.Instance.RegisterEntityFramework();
             IoCFactory.Instance.CurrentContainer.RegisterType<DbContext, SampleDbContext>();
             var unitOfWork = IoCFactory.Resolve<IUnitOfWork>();
             var domainRepository = unitOfWork.GetDomainRepository();
@@ -31,15 +31,15 @@ namespace Sample.UnitTest
             }
             unitOfWork.Commit();
             long count = 0;
-            var pageActivities =
-                domainRepository.FindAll<Activity>().ToList().Page(1, 3);
+            var pageActivities = domainRepository.FindAll<Activity>().ToList().Page(1, 3);
         }
 
         [TestMethod]
         public void TestMethod2()
         {
-            SimplifyDDDConfiguration.Instance.RegisterLogging();
-            var logger = IoCFactory.Resolve<ILogger>();
+            SimplifyDDDConfiguration.Instance.RegisterEntLibLogging();
+            var logFactory = IoCFactory.Resolve<ILoggerFactory>();
+            var logger = logFactory.Create();
             logger.Debug("test");
         }
     }

@@ -12,7 +12,7 @@ namespace SimplifyDDD.EntityFramework
 {
     public static class ConfigurationExtension
     {
-        public static SimplifyDDDConfiguration RegisterPersistence(this SimplifyDDDConfiguration simplifyDddConfiguration)
+        public static SimplifyDDDConfiguration RegisterEntityFramework(this SimplifyDDDConfiguration simplifyDddConfiguration)
         {
             IoCFactory.Instance.CurrentContainer.RegisterType(typeof(IRepository<>), typeof(Repository<>));
             IoCFactory.Instance.CurrentContainer.RegisterType<IUnitOfWork, UnitOfWork>();
