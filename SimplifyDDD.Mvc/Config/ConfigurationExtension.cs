@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Web.Routing;
 using System.Web.Http.Controllers;
 using System.Web.Http;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using SimplifyDDD.Config;
 using SimplifyDDD.Mvc.Unity;
 

@@ -26,7 +26,7 @@ namespace SimplifyDDD.EntLibLogging
                 Priority = (int)TraceEventType.Verbose,
                 Severity = TraceEventType.Verbose
             };
-            log.Categories.Add("Debug");
+            //log.Categories.Add("Debug");
             _writer.Write(log);
         }
 
@@ -48,7 +48,7 @@ namespace SimplifyDDD.EntLibLogging
                 Priority = (int)TraceEventType.Information,
                 Severity = TraceEventType.Information
             };
-            log.Categories.Add("Information");
+            //log.Categories.Add("Information");
             _writer.Write(log);
         }
 
@@ -70,7 +70,7 @@ namespace SimplifyDDD.EntLibLogging
                 Priority = (int)TraceEventType.Error,
                 Severity = TraceEventType.Error
             };
-            log.Categories.Add("Error");
+            //log.Categories.Add("Error");
             _writer.Write(log);
         }
 
@@ -92,7 +92,7 @@ namespace SimplifyDDD.EntLibLogging
                 Priority = (int)TraceEventType.Warning,
                 Severity = TraceEventType.Warning
             };
-            log.Categories.Add("Warning");
+            //log.Categories.Add("Warning");
             _writer.Write(log);
         }
 
@@ -114,7 +114,7 @@ namespace SimplifyDDD.EntLibLogging
                 Priority = (int)TraceEventType.Critical,
                 Severity = TraceEventType.Critical
             };
-            log.Categories.Add("Critical");
+            //log.Categories.Add("Critical");
             _writer.Write(log);
         }
 
