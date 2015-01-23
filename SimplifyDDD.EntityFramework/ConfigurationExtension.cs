@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SimplifyDDD.Config;
+using SimplifyDDD;
 using SimplifyDDD.Repository;
 using Microsoft.Practices.Unity;
 using SimplifyDDD.UnitOfWork;

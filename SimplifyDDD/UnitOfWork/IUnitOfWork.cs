@@ -26,8 +26,8 @@ namespace SimplifyDDD.UnitOfWork
         IDomainRepository GetDomainRepository<TDomainRespository>(string name) where TDomainRespository : IDomainRepository;
         IRepository<TAggregateRoot> GetRepository<TAggregateRoot>() where TAggregateRoot : class, IAggregateRoot;
         IRepository<TAggregateRoot> GetRepository<TAggregateRoot>(string name) where TAggregateRoot : class, IAggregateRoot;
-        TService GetService<TService>() where TService : IJoinable;
-        TService GetService<TService>(string name) where TService : IJoinable;
+        TService GetDomainService<TService>() where TService : IDomainRepository;
+        TService GetDomainService<TService>(string name) where TService : IDomainRepository;
         void Joint(ICollection<IJoinable> works);
         int Commit();
     }

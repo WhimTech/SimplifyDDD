@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Web.Routing;
 using System.Web.Http.Controllers;
 using System.Web.Http;
-using SimplifyDDD.Config;
+using SimplifyDDD;
 using SimplifyDDD.Mvc.Unity;
 
 namespace SimplifyDDD.Mvc.Config

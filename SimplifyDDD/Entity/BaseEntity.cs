@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SimplifyDDD.Entity
 {
-    public class BaseEntity : BaseModel, IEntity
+    /// <summary>
+    /// 实体基类型（字符串类型主键）
+    /// </summary>
+    public class BaseEntity : BaseModel, IEntity<string>
     {
     }
 }

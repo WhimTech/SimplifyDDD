@@ -11,11 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using SimplifyDDD.Entity;
 using SimplifyDDD.Repository;
+using SimplifyDDD.Service;
 using SimplifyDDD.UnitOfWork;
 
 namespace SimplifyDDD.EntityFramework
 {
-    public class Repository<TAggregateRoot> : BaseService, IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot
+    public class Repository<TAggregateRoot> : BaseDomainService, IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot
     {
         public Repository()
         {
@@ -82,9 +83,9 @@ namespace SimplifyDDD.EntityFramework
             return DbSet;
         }
 
-        public virtual long Count(Expression<Func<TAggregateRoot, bool>> specification)
+        public virtual long Count(Expression<Func<TAggregateRoot, bool>> predicate)
         {
-            return DbSet.Count(specification);
+            return DbSet.Count(predicate);
         }
 
         public virtual IQueryable<TAggregateRoot> FindAll()
@@ -92,19 +93,19 @@ namespace SimplifyDDD.EntityFramework
             return DbSet;
         }
 
-        public virtual IQueryable<TAggregateRoot> FindAll(Expression<Func<TAggregateRoot, bool>> specification)
+        public virtual IQueryable<TAggregateRoot> FindAll(Expression<Func<TAggregateRoot, bool>> predicate)
         {
-            return DbSet.Where(specification);
+            return DbSet.Where(predicate);
         }
 
-        public virtual TAggregateRoot Find(Expression<Func<TAggregateRoot, bool>> specification)
+        public virtual TAggregateRoot Find(Expression<Func<TAggregateRoot, bool>> predicate)
         {
-            return DbSet.FirstOrDefault(specification);
+            return DbSet.FirstOrDefault(predicate);
         }
 
-        public virtual TAggregateRoot Find(Expression<Func<TAggregateRoot, bool>> specification, Expression<Func<TAggregateRoot, Object>> include)
+        public virtual TAggregateRoot Find(Expression<Func<TAggregateRoot, bool>> predicate, Expression<Func<TAggregateRoot, Object>> include)
         {
-            return DbSet.Include(include).FirstOrDefault(specification);
+            return DbSet.Include(include).FirstOrDefault(predicate);
         }
 
         public virtual IQueryable<TAggregateRoot> Include(Expression<Func<TAggregateRoot, Object>> include)
@@ -112,9 +113,9 @@ namespace SimplifyDDD.EntityFramework
             return DbSet.Include(include);
         }
 
-        public virtual bool Exists(Expression<Func<TAggregateRoot, bool>> specification)
+        public virtual bool Exists(Expression<Func<TAggregateRoot, bool>> predicate)
         {
-            return DbSet.Any(specification);
+            return DbSet.Any(predicate);
         }
 
         public virtual void Remove(TAggregateRoot entity)

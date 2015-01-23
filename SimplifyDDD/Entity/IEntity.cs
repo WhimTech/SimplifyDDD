@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace SimplifyDDD.Entity
 {
+    /// <summary>
+    /// 实体
+    /// </summary>
     public interface IEntity
     {
-        string Id { get; set; }
+    }
+
+    /// <summary>
+    /// 实体
+    /// </summary>
+    /// <typeparam name="TKey">主键</typeparam>
+    public interface IEntity<TKey> : IEntity
+    {
+        TKey Id { get; set; }
         DateTime CreateTime { get; set; }
     }
 }

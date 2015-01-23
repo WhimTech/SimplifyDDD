@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SimplifyDDD.Entity
 {
-    public class BaseAggregateRoot : BaseModel, IAggregateRoot
+    /// <summary>
+    /// 聚合根基类型（字符串类型主键）
+    /// </summary>
+    public class BaseAggregateRoot : BaseModel, IAggregateRoot<string>
     {
     }
 }

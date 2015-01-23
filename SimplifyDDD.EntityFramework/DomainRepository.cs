@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using SimplifyDDD.Entity;
 using SimplifyDDD.Repository;
+using SimplifyDDD.Service;
 using SimplifyDDD.UnitOfWork;
 
 namespace SimplifyDDD.EntityFramework
 {
-    public class DomainRepository : BaseService, IDomainRepository
+    public class DomainRepository : BaseDomainService, IDomainRepository
     {
         public DomainRepository()
         {
@@ -70,9 +71,9 @@ namespace SimplifyDDD.EntityFramework
             return GetRepository<TAggregateRoot>().Count();
         }
 
-        public long Count<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public long Count<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> predicate) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().Count(specification);
+            return GetRepository<TAggregateRoot>().Count(predicate);
         }
 
         public IQueryable<TAggregateRoot> GetAll<TAggregateRoot>() where TAggregateRoot : class, IAggregateRoot
@@ -87,28 +88,28 @@ namespace SimplifyDDD.EntityFramework
             return GetRepository<TAggregateRoot>();
         }
 
-        public IQueryable<TAggregateRoot> FindAll<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public IQueryable<TAggregateRoot> FindAll<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> percidate) where TAggregateRoot : class, IAggregateRoot
         {
-            //return GetRepository<TAggregateRoot>().FindAll(specification);
-            return GetRepository<TAggregateRoot>().Where(specification);
+            //return GetRepository<TAggregateRoot>().FindAll(predicate);
+            return GetRepository<TAggregateRoot>().Where(percidate);
         }
 
-        public TAggregateRoot Find<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public TAggregateRoot Find<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> percidate) where TAggregateRoot : class, IAggregateRoot
         {
-            //return UnitOfWork.GetRepository<TAggregateRoot>().Find(specification);
-            return GetRepository<TAggregateRoot>().FirstOrDefault(specification);
+            //return UnitOfWork.GetRepository<TAggregateRoot>().Find(predicate);
+            return GetRepository<TAggregateRoot>().FirstOrDefault(percidate);
         }
 
         public TAggregateRoot Find<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification, Expression<Func<TAggregateRoot, Object>> include) where TAggregateRoot : class, IAggregateRoot
         {
-            //return UnitOfWork.GetRepository<TAggregateRoot>().Find(specification);
+            //return UnitOfWork.GetRepository<TAggregateRoot>().Find(predicate);
             return GetRepository<TAggregateRoot>().Include(include).FirstOrDefault(specification);
         }
 
-        public bool Exists<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public bool Exists<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> percidate) where TAggregateRoot : class, IAggregateRoot
         {
-            //return GetRepository<TAggregateRoot>().Exists(specification);
-            return GetRepository<TAggregateRoot>().Any(specification);
+            //return GetRepository<TAggregateRoot>().Exists(predicate);
+            return GetRepository<TAggregateRoot>().Any(percidate);
         }
 
         public virtual IQueryable<TAggregateRoot> Include<TAggregateRoot>(Expression<Func<TAggregateRoot, Object>> include) where TAggregateRoot : class, IAggregateRoot
@@ -144,7 +145,7 @@ namespace SimplifyDDD.EntityFramework
             if (orderExpression == null)
                 throw new ArgumentNullException("orderExpression");
 
-            //return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, specification);
+            //return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, predicate);
             var result = GetRepository<TAggregateRoot>().Where(specification);
             var orderedResult = result.OrderBy(orderExpression);
             return orderedResult.Skip((pageIndex) * pageSize).Take(pageSize);
@@ -152,7 +153,7 @@ namespace SimplifyDDD.EntityFramework
 
         public IQueryable<TAggregateRoot> PageFind<TAggregateRoot>(int pageIndex, int pageSize, Expression<Func<TAggregateRoot, bool>> specification, ref long totalCount, Expression<Func<TAggregateRoot, dynamic>> orderExpression) where TAggregateRoot : class, IAggregateRoot
         {
-            //return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, specification, ref totalCount);
+            //return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, predicate, ref totalCount);
             if (pageIndex < 0)
                 throw new ArgumentException("InvalidPageIndex");
 
@@ -162,7 +163,7 @@ namespace SimplifyDDD.EntityFramework
             if (orderExpression == null)
                 throw new ArgumentNullException("orderExpression");
 
-            //return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, specification);
+            //return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, predicate);
             var result = GetRepository<TAggregateRoot>().Where(specification);
             var orderedResult = result.OrderBy(orderExpression);
             totalCount = orderedResult.Count();
@@ -210,9 +211,9 @@ namespace SimplifyDDD.EntityFramework
             return GetRepository<TAggregateRoot>().GetByKey(keyValues);
         }
 
-        public long Count<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public long Count<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> predicate) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().Count(specification);
+            return GetRepository<TAggregateRoot>().Count(predicate);
         }
 
         public IQueryable<TAggregateRoot> FindAll<TAggregateRoot>() where TAggregateRoot : class, IAggregateRoot
@@ -220,19 +221,19 @@ namespace SimplifyDDD.EntityFramework
             return GetRepository<TAggregateRoot>().FindAll();
         }
 
-        public IQueryable<TAggregateRoot> FindAll<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public IQueryable<TAggregateRoot> FindAll<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> predicate) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().FindAll(specification);
+            return GetRepository<TAggregateRoot>().FindAll(predicate);
         }
 
-        public TAggregateRoot Find<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public TAggregateRoot Find<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> predicate) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().Find(specification);
+            return GetRepository<TAggregateRoot>().Find(predicate);
         }
 
-        public bool Exists<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public bool Exists<TAggregateRoot>(Expression<Func<TAggregateRoot, bool>> predicate) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().Exists(specification);
+            return GetRepository<TAggregateRoot>().Exists(predicate);
         }
 
         public void Remove<TAggregateRoot>(TAggregateRoot entity) where TAggregateRoot : class, IAggregateRoot
@@ -250,14 +251,14 @@ namespace SimplifyDDD.EntityFramework
             GetRepository<TAggregateRoot>().Update(entity);
         }
 
-        public IQueryable<TAggregateRoot> PageFind<TAggregateRoot>(int pageIndex, int pageSize, Expression<Func<TAggregateRoot, bool>> specification) where TAggregateRoot : class, IAggregateRoot
+        public IQueryable<TAggregateRoot> PageFind<TAggregateRoot>(int pageIndex, int pageSize, Expression<Func<TAggregateRoot, bool>> predicate) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, specification);
+            return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, predicate);
         }
 
-        public IQueryable<TAggregateRoot> PageFind<TAggregateRoot>(int pageIndex, int pageSize, Expression<Func<TAggregateRoot, bool>> specification, ref long totalCount) where TAggregateRoot : class, IAggregateRoot
+        public IQueryable<TAggregateRoot> PageFind<TAggregateRoot>(int pageIndex, int pageSize, Expression<Func<TAggregateRoot, bool>> predicate, ref long totalCount) where TAggregateRoot : class, IAggregateRoot
         {
-            return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, specification, ref totalCount);
+            return GetRepository<TAggregateRoot>().PageFind(pageIndex, pageSize, predicate, ref totalCount);
         }
 
         public virtual int Commit()
