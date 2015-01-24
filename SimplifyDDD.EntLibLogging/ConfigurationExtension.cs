@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using SimplifyDDD;
+using SimplifyDDD.Config;
 using SimplifyDDD.Logging;
 using SimplifyDDD.Repository;
 using SimplifyDDD.UnitOfWork;

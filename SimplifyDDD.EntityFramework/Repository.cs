@@ -78,6 +78,11 @@ namespace SimplifyDDD.EntityFramework
             return DbSet.Find(keyValues);
         }
 
+        public long Count()
+        {
+            return DbSet.Count();
+        }
+
         public virtual IQueryable<TAggregateRoot> GetAll()
         {
             return DbSet;

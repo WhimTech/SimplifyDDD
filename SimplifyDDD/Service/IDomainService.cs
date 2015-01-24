@@ -9,7 +9,7 @@ namespace SimplifyDDD.Service
     /// <summary>
     /// 领域服务
     /// </summary>
-    public interface IDomainService : IJoinable
+    public interface IDomainService : IJoinableWork
     {
     }
 }

@@ -218,25 +218,21 @@ namespace SimplifyDDD.EntityFramework
             return genericRepo;
         }
 
-        /// <summary>
-        /// 获取服务
-        /// </summary>
-        /// <typeparam name="TService"></typeparam>
-        /// <returns></returns>
-        public TService GetDomainService<TService>() where TService : IDomainRepository
+        TService IUnitOfWork.GetDomainService<TService>()
         {
-            var service = typeof(TService).IsClass ? Activator.CreateInstance<TService>() : IoCFactory.Resolve<TService>();
-            service.Join(this);
+            //var service = typeof(TService).IsClass ? Activator.CreateInstance<TService>() : IoCFactory.Resolve<TService>();
+            var service = IoCFactory.Resolve<TService>();
+            this.Joint(service);
             return service;
         }
 
-        public TService GetDomainService<TService>(string name) where TService : IDomainRepository
+        TService IUnitOfWork.GetDomainService<TService>(string name)
         {
-            var service = typeof(TService).IsClass ? Activator.CreateInstance<TService>() : IoCFactory.Resolve<TService>(name);
-            service.Join(this);
+            //var service = typeof(TService).IsClass ? Activator.CreateInstance<TService>() : IoCFactory.Resolve<TService>(name);
+            var service = IoCFactory.Resolve<TService>(name);
+            this.Joint(service);
             return service;
         }
-
 
         private Dictionary<Type, DbContext> dbContexts = new Dictionary<Type, DbContext>();
         /// <summary>
@@ -254,15 +250,39 @@ namespace SimplifyDDD.EntityFramework
             return dbContexts[dbContextType];
         }
 
+        private UnitOfWorkProxy _unitOfWorkProxy = null;
+        /// <summary>
+        /// 工作单元代理
+        /// </summary>
+        public UnitOfWorkProxy UnitOfWorkProxy
+        {
+            get
+            {
+                if (_unitOfWorkProxy == null)
+                {
+                    _unitOfWorkProxy = new UnitOfWorkProxy(this);
+                }
+                return _unitOfWorkProxy;
+            }
+        }
+
         /// <summary>
         /// 联合多个工作到同一个工作单元中
         /// </summary>
         /// <param name="works"></param>
-        public void Joint(ICollection<IJoinable> works)
+        public void Joint(ICollection<IJoinableWork> works)
         {
             foreach (var work in works)
             {
-                work.Join(this);
+                work.Join(UnitOfWorkProxy);
+            }
+        }
+
+        public void Joint(params IJoinableWork[] works)
+        {
+            foreach (var work in works)
+            {
+                work.Join(UnitOfWorkProxy);
             }
         }
 

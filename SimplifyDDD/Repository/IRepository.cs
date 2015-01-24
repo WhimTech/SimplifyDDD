@@ -12,7 +12,7 @@ namespace SimplifyDDD.Repository
     /// <summary>
     /// 仓储
     /// </summary>
-    public interface IRepository : IJoinable
+    public interface IRepository : IJoinableWork
     {
     }
 

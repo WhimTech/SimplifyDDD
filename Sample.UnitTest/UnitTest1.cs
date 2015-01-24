@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sample.Persistence;
 using SimplifyDDD;
+using SimplifyDDD.Config;
 using SimplifyDDD.EntityFramework;
 using SimplifyDDD.EntLibLogging;
 using SimplifyDDD.Extension;

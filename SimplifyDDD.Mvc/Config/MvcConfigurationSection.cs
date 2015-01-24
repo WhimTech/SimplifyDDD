@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 using SimplifyDDD;
+using SimplifyDDD.Config;
 
 namespace SimplifyDDD.Mvc.Config
 {

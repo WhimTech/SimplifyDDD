@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimplifyDDD;
+using SimplifyDDD.Config;
 using SimplifyDDD.Repository;
 using Microsoft.Practices.Unity;
 using SimplifyDDD.UnitOfWork;

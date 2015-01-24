@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SimplifyDDD.Entity;
 using SimplifyDDD.Repository;
+using SimplifyDDD.Service;
 
 namespace SimplifyDDD.UnitOfWork
 {
@@ -26,9 +27,10 @@ namespace SimplifyDDD.UnitOfWork
         IDomainRepository GetDomainRepository<TDomainRespository>(string name) where TDomainRespository : IDomainRepository;
         IRepository<TAggregateRoot> GetRepository<TAggregateRoot>() where TAggregateRoot : class, IAggregateRoot;
         IRepository<TAggregateRoot> GetRepository<TAggregateRoot>(string name) where TAggregateRoot : class, IAggregateRoot;
-        TService GetDomainService<TService>() where TService : IDomainRepository;
-        TService GetDomainService<TService>(string name) where TService : IDomainRepository;
-        void Joint(ICollection<IJoinable> works);
+        TService GetDomainService<TService>() where TService : IDomainService;
+        TService GetDomainService<TService>(string name) where TService : IDomainService;
+        void Joint(ICollection<IJoinableWork> works);
+        void Joint(params IJoinableWork[] works);
         int Commit();
     }
 }

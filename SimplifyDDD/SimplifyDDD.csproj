@@ -105,7 +105,7 @@
     <Compile Include="Specifications\Specification.cs" />
     <Compile Include="Specifications\SpecificationUtility.cs" />
     <Compile Include="Service\BaseDomainService.cs" />
-    <Compile Include="UnitOfWork\IJoinable.cs" />
+    <Compile Include="UnitOfWork\IJoinableWork.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
