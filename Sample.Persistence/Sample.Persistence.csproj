@@ -57,11 +57,16 @@
   <ItemGroup>
     <Compile Include="SampleDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleDomainRespository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj">
       <Project>{960723a3-fee5-46e5-b0e0-1b30a1d9ea0e}</Project>
       <Name>Sample</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimplifyDDD.EntityFramework\SimplifyDDD.EntityFramework.csproj">
+      <Project>{200635D5-89CB-4D20-AFB5-869B4E48DD51}</Project>
+      <Name>SimplifyDDD.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimplifyDDD\SimplifyDDD.csproj">
       <Project>{4e58b52d-667b-4e9a-bc2f-a377adb40a8b}</Project>
