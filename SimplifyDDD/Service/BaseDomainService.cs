@@ -1,4 +1,5 @@
-﻿using SimplifyDDD.UnitOfWork;
+﻿using SimplifyDDD.Repository;
+using SimplifyDDD.UnitOfWork;
 
 namespace SimplifyDDD.Service
 {
@@ -25,6 +26,11 @@ namespace SimplifyDDD.Service
                 }
                 return _unitOfWork;
             }
+        }
+
+        public virtual IDomainRepository DomainRepository
+        {
+            get { return UnitOfWork.GetDomainRepository(); }
         }
 
         /// <summary>

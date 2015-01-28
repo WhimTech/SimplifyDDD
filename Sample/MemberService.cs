@@ -10,22 +10,22 @@ namespace Sample
 {
     public class MemberService : BaseDomainService
     {
-        private readonly IDomainRepository _domainRepository;
-
-        public MemberService()
+        public override IDomainRepository DomainRepository
         {
-            _domainRepository = UnitOfWork.GetDomainRepository<ISampleDomainRepository>();
+            get
+            {
+                return UnitOfWork.GetDomainRepository<ISampleDomainRepository>();
+            }
         }
 
         public Member GetMember(string memberId)
         {
-            return _domainRepository.GetByKey<Member>(memberId);
+            return DomainRepository.GetByKey<Member>(memberId);
         }
 
-        public void AddMember()
+        public void AddMember(Member member)
         {
-            var member = new Member();
-            _domainRepository.Add(member);
+            DomainRepository.Add(member);
             UnitOfWork.Commit();
         }
     }

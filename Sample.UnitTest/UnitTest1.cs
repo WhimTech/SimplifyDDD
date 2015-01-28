@@ -42,5 +42,20 @@ namespace Sample.UnitTest
             var logger = logFactory.Create();
             logger.Debug("test");
         }
+
+        [TestMethod]
+        public void JoinableTest()
+        {
+            SimplifyDDDConfiguration.Instance.RegisterEntityFramework();
+            IoCFactory.Instance.CurrentContainer.RegisterType<DbContext, SampleDbContext>();
+            IoCFactory.Instance.CurrentContainer.RegisterType<ISampleDomainRepository, SampleDomainRespository>();
+            var activityService = IoCFactory.Resolve<ActivityService>();
+            var memberService = IoCFactory.Resolve<MemberService>();
+            var activity = new Activity();
+            var member = new Member();
+            activityService.AddActivity(activity);
+            activityService.AddActivityMember(activity.Id,member);
+        }
+
     }
 }

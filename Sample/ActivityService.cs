@@ -13,31 +13,49 @@ namespace Sample
     public class ActivityService : BaseDomainService
     {
         private readonly MemberService _memberService;
-        private readonly IDomainRepository _domainRepository;
+
+        public override IDomainRepository DomainRepository
+        {
+            get
+            {
+                return UnitOfWork.GetDomainRepository<ISampleDomainRepository>();
+            }
+        }
+
         public ActivityService(MemberService memberService)
         {
             _memberService = memberService;
-            _domainRepository = UnitOfWork.GetDomainRepository<ISampleDomainRepository>();
             UnitOfWork.Joint(_memberService);
         }
 
         public Activity GetActivity(string activityId)
         {
-            return _domainRepository.GetByKey<Activity>(activityId);
+            return DomainRepository.GetByKey<Activity>(activityId);
         }
 
-        public void AddActivity()
+        public void AddActivity(Activity activity)
         {
-            var activity = new Activity();
-            _domainRepository.Add(activity);
+            DomainRepository.Add(activity);
             UnitOfWork.Commit();
         }
 
-        public void JoinActivity(string activityId, string memberId)
+        public void JoinActiviyNotCommit(string activityId, string memberId)
         {
             var member = _memberService.GetMember(memberId);
             var activity = GetActivity(activityId);
             activity.Members.Add(member);
+        }
+
+        public void JoinActivity(string activityId, string memberId)
+        {
+            JoinActiviyNotCommit(activityId, memberId);
+            UnitOfWork.Commit();
+        }
+
+        public void AddActivityMember(string activityId,Member member)
+        {
+            _memberService.AddMember(member);
+            JoinActiviyNotCommit(activityId, member.Id);
             UnitOfWork.Commit();
         }
     }

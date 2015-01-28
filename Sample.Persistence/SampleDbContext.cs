@@ -16,5 +16,17 @@ namespace Sample.Persistence
         }
 
         public DbSet<Activity> Activities { get; set; }
+
+        public DbSet<Member> Members { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Activity>()
+                .HasMany(ent => ent.Members)
+                .WithMany(ent => ent.Activities)
+                .Map(ent => ent.ToTable("ActivityMembers").MapLeftKey("ActivityId").MapRightKey("MemberId"));
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
