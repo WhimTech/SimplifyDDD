@@ -8,6 +8,9 @@ using System.Collections;
 
 namespace SimplifyDDD.Config
 {
+    /// <summary>
+    /// 配置读取器
+    /// </summary>
     public sealed class ConfigurationReader
     {
         private static readonly ConfigurationReader _Instance = new ConfigurationReader();
@@ -18,11 +21,20 @@ namespace SimplifyDDD.Config
         {
         }
 
+        /// <summary>
+        /// 配置节读取器实例（单例）
+        /// </summary>
         public static ConfigurationReader Instance { get { return _Instance; } }
 
 
         Hashtable Configs = new Hashtable();
 
+        /// <summary>
+        /// 获取配置节
+        /// </summary>
+        /// <param name="name">配置节名</param>
+        /// <typeparam name="TConfigurationSection">配置节泛型</typeparam>
+        /// <returns>配置节</returns>
         public TConfigurationSection GetConfigurationSection<TConfigurationSection>(string name = null)
             where TConfigurationSection : ConfigurationSection
         {

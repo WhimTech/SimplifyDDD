@@ -6,11 +6,18 @@ using System.Configuration;
 
 namespace SimplifyDDD.Config
 {
+    /// <summary>
+    /// 基础配置节集合
+    /// </summary>
+    /// <typeparam name="TConfigurationElement">配置节泛型</typeparam>
     public class BaseConfigurationElementCollection<TConfigurationElement> : ConfigurationElementCollection
         where TConfigurationElement : ConfigurationElement, new()
     {
         string ConfigurationElementKey { get; set; }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public BaseConfigurationElementCollection()
         {
             foreach (var p in typeof(TConfigurationElement).GetProperties())
@@ -24,6 +31,10 @@ namespace SimplifyDDD.Config
             }
         }
 
+        /// <summary>
+        /// 获取对应索引的配置节
+        /// </summary>
+        /// <param name="idx">索引</param>
         public TConfigurationElement this[int idx]
         {
             get
@@ -39,8 +50,7 @@ namespace SimplifyDDD.Config
                 base.BaseAdd(idx, value);
             }
         }
-
-
+        
 
         public override ConfigurationElementCollectionType CollectionType
         {

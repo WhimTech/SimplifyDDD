@@ -5,11 +5,25 @@ using System.Reflection.Emit;
 
 namespace SimplifyDDD.Config
 {
+    /// <summary>
+    /// 快速调用
+    /// </summary>
     public class FastInvoke
     {
+        /// <summary>
+        /// 快速调用处理器
+        /// </summary>
+        /// <param name="target">调用目标</param>
+        /// <param name="paramters">调用参数</param>
         public delegate object FastInvokeHandler(object target, object[] paramters);
+
         static Hashtable FastInvokeHandlers = new Hashtable();
 
+        /// <summary>
+        /// 获取方法调用器
+        /// </summary>
+        /// <param name="methodInfo"></param>
+        /// <returns></returns>
         public static FastInvokeHandler GetMethodInvoker(MethodInfo methodInfo)
         {
             FastInvokeHandler invoder = FastInvokeHandlers[methodInfo] as FastInvokeHandler;

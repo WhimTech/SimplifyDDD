@@ -10,10 +10,19 @@ using System.Configuration;
 
 namespace SimplifyDDD.Config
 {
+    /// <summary>
+    /// SimplifyDDD配置
+    /// </summary>
     public class SimplifyDDDConfiguration
     {
+        /// <summary>
+        /// SimplifyDDD配置实例（单例）
+        /// </summary>
         public static readonly SimplifyDDDConfiguration Instance = new SimplifyDDDConfiguration();
 
+        /// <summary>
+        /// Unity配置节
+        /// </summary>
         public UnityConfigurationSection UnityConfigurationSection
         {
             get
@@ -26,6 +35,12 @@ namespace SimplifyDDD.Config
         {
         }
 
+        /// <summary>
+        /// 获取应用配置
+        /// </summary>
+        /// <param name="key"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T GetAppConfig<T>(string key)
         {
             T val = default(T);
@@ -48,6 +63,12 @@ namespace SimplifyDDD.Config
             return val;
         }
 
+        /// <summary>
+        /// 获取应用配置
+        /// </summary>
+        /// <param name="keyname">键</param>
+        /// <param name="configPath">配置路径</param>
+        /// <returns>配置属性值</returns>
         public static string GetAppConfig(string keyname, string configPath = "Config")
         {
             var config = System.Configuration.ConfigurationManager.AppSettings[keyname];
