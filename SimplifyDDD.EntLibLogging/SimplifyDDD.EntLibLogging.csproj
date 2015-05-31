@@ -64,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationExtension.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="LoggerFactory.cs" />
+    <Compile Include="EntLibLogEntry.cs" />
+    <Compile Include="EntLibLogWriter.cs" />
+    <Compile Include="EntLibLogger.cs" />
+    <Compile Include="EntLibLoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

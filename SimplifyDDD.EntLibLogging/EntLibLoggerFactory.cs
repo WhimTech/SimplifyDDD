@@ -8,21 +8,21 @@ using SimplifyDDD.Logging;
 
 namespace SimplifyDDD.EntLibLogging
 {
-    public class LoggerFactory : ILoggerFactory
+    public class EntLibLoggerFactory : ILoggerFactory
     {
         public ILogger Create()
         {
-            return new Logger(EnterpriseLibraryContainer.Current.GetInstance<LogWriter>());
+            return new EntLibLogger(new EntLibLogWriter());
         }
 
         public ILogger Create(string name)
         {
-            return new Logger(EnterpriseLibraryContainer.Current.GetInstance<LogWriter>(name));
+            return new EntLibLogger(new EntLibLogWriter());
         }
 
         public ILogger Create(Type type)
         {
-            return new Logger((LogWriter)EnterpriseLibraryContainer.Current.GetInstance(type));
+            return new EntLibLogger(new EntLibLogWriter());
         }
     }
 }

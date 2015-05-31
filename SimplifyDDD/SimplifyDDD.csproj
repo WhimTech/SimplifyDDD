@@ -86,8 +86,10 @@
     <Compile Include="Extension\PaginationExtension.cs" />
     <Compile Include="Extension\Utility.cs" />
     <Compile Include="IoCFactory.cs" />
+    <Compile Include="Logging\ILogEntry.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\ILoggerFactory.cs" />
+    <Compile Include="Logging\ILogWriter.cs" />
     <Compile Include="Repository\IDomainRepository.cs" />
     <Compile Include="Service\IDomainService.cs" />
     <Compile Include="Specifications\AllSpecification.cs" />

@@ -9,18 +9,18 @@ using SimplifyDDD.Logging;
 
 namespace SimplifyDDD.EntLibLogging
 {
-    public class Logger : ILogger
+    public class EntLibLogger : ILogger
     {
-        private readonly LogWriter _writer;
+        private readonly ILogWriter _writer;
 
-        public Logger(LogWriter writer)
+        public EntLibLogger(ILogWriter writer)
         {
             _writer = writer;
         }
 
         public void Debug(object message)
         {
-            var log = new LogEntry
+            var log = new EntLibLogEntry
             {
                 Message = message.ToString(),
                 Priority = (int)TraceEventType.Verbose,
@@ -42,7 +42,7 @@ namespace SimplifyDDD.EntLibLogging
 
         public void Info(object message)
         {
-            var log = new LogEntry
+            var log = new EntLibLogEntry
             {
                 Message = message.ToString(),
                 Priority = (int)TraceEventType.Information,
@@ -64,7 +64,7 @@ namespace SimplifyDDD.EntLibLogging
 
         public void Error(object message)
         {
-            var log = new LogEntry
+            var log = new EntLibLogEntry
             {
                 Message = message.ToString(),
                 Priority = (int)TraceEventType.Error,
@@ -86,7 +86,7 @@ namespace SimplifyDDD.EntLibLogging
 
         public void Warn(object message)
         {
-            var log = new LogEntry
+            var log = new EntLibLogEntry
             {
                 Message = message.ToString(),
                 Priority = (int)TraceEventType.Warning,
@@ -108,7 +108,7 @@ namespace SimplifyDDD.EntLibLogging
 
         public void Fatal(object message)
         {
-            var log = new LogEntry
+            var log = new EntLibLogEntry
             {
                 Message = message.ToString(),
                 Priority = (int)TraceEventType.Critical,
