@@ -100,21 +100,25 @@ namespace SimplifyDDD.Mvc.Config
         {
             List<Assembly> assemblies = new List<Assembly>();
 
-            var mvcControllerAssemblies = ConfigurationReader.Instance
-                                                             .GetConfigurationSection<MvcConfigurationSection>()
-                                                             .MvcControllers;
-            if (mvcControllerAssemblies != null)
+            try
             {
-                foreach (MvcControllerElement mvcControllerAssembly in mvcControllerAssemblies)
+                var mvcControllerAssemblies = ConfigurationReader.Instance.GetConfigurationSection<MvcConfigurationSection>().MvcControllers;
+                if (mvcControllerAssemblies != null)
                 {
-                    try
+                    foreach (MvcControllerElement mvcControllerAssembly in mvcControllerAssemblies)
                     {
-                        assemblies.Add(Assembly.Load(mvcControllerAssembly.Assembly));
-                    }
-                    catch (System.Exception)
-                    {
+                        try
+                        {
+                            assemblies.Add(Assembly.Load(mvcControllerAssembly.Assembly));
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
             }
             return assemblies;
         }
