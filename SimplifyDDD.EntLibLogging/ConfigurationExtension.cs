@@ -12,6 +12,7 @@ namespace SimplifyDDD.EntLibLogging
         public static SimplifyDDDConfiguration RegisterEntLibLogging(this SimplifyDDDConfiguration simplifyDddConfiguration)
         {
             IoCFactory.Instance.CurrentContainer.RegisterType<ILoggerFactory, EntLibLoggerFactory>();
+            IoCFactory.Instance.CurrentContainer.RegisterType<ILogWriter, EntLibLogWriter>();
             return simplifyDddConfiguration;
         }
 
